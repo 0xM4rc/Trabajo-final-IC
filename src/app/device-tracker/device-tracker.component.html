@@ -1,0 +1,28 @@
+<div class="table-container">
+  <h2>Device Tracking</h2>
+  <label for="deviceSelect">Select a device:</label>
+  <select id="deviceSelect" (change)="onDeviceChange($event)">
+    <option *ngFor="let device of availableDevices" [value]="device">{{ device }}</option>
+  </select>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Identifier</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of data; let i = index" [class.odd]="i % 2 !== 0">
+          <td>{{ record.timestamp | date:'dd/MM/yyyy, h:mm:ss a' }}</td>
+          <td>{{ record.identifier }}</td>
+          <td>{{ record.latitude }}</td>
+          <td>{{ record.longitude }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

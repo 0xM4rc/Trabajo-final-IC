@@ -1,0 +1,39 @@
+<div class="cockpit-dashboard">
+    <header>
+      <h1>🚀 Control Panel</h1>
+      <div class="view-buttons">
+        <button (click)="switchView('map')" [class.active]="currentView === 'map'">
+          🌍 Map View
+        </button>
+        <button (click)="switchView('table')" [class.active]="currentView === 'table'">
+          📋 Table View
+        </button>
+      </div>
+    </header>
+  
+    <section class="dashboard-content">
+      <div class="panel panel-sidebar">
+        <h2>General Status</h2>
+        <div class="metrics">
+          <div class="metric">
+            <span>📡 Registered Devices</span>
+            <strong>3</strong>
+          </div>
+          <div class="metric">
+            <span>📍 Last Location</span>
+            <strong>28.1286, -15.4363</strong>
+          </div>
+          <div class="metric">
+            <span>🕒 Last Update</span>
+            <strong>{{ currentDate() }}</strong>
+          </div>
+        </div>
+      </div>
+  
+      <div class="panel panel-content">
+        <app-device-tracker *ngIf="currentView === 'table'"></app-device-tracker>
+        <app-arduino-map-tracking *ngIf="currentView === 'map'"></app-arduino-map-tracking>
+      </div>
+    </section>
+  </div>
+  
